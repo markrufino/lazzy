@@ -70,7 +70,7 @@ def makeFile(jsonObj, objname):
     lines = []
     properties = process(jsonObj)
 
-    start = "class "+objname+": Mappable {\n"
+    start = "class "+objname+": Mappable {"
 
     declarations = generateDeclarations(properties)
     initBlock = generateInitBlock()
@@ -84,8 +84,25 @@ def makeFile(jsonObj, objname):
     lines.extend(mappingBlock)
     lines.append(end)
 
+    indention_level = 0
+
+    indented_lines = []
+
+    for line in lines:
+        if line == "}":
+            indention_level -= 1
+            print(line)
+
+        indent = "\t" * indention_level
+        indented_lines.append(indent+line)
+        
+        if line.endswith("{"):
+            indention_level += 1
+            print(line)
+        
+
     with open(objname+".swift", "w") as f:
-        f.write("\n".join(lines))
+        f.write("\n".join(indented_lines))
 
 
 json_object = json.loads(contents)
