@@ -1,4 +1,4 @@
-# lazzy.py
+# lazzy.py (version 1.0)
 
 Generate .swift files of Mappable objects from request or response JSON strings.
 
