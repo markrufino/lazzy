@@ -66,6 +66,21 @@ def generateMappingBlock(properties):
     return mappingBlock
 
 
+def indent(lines):
+    indention_level = 0
+    indented_lines = []
+    for line in lines:
+        if line == "}":
+            indention_level -= 1
+
+        indent = "\t" * indention_level
+        indented_lines.append(indent+line)
+        
+        if line.endswith("{"):
+            indention_level += 1
+
+    return indented_lines
+
 def makeFile(jsonObj, objname):
     lines = []
     properties = process(jsonObj)
@@ -84,22 +99,7 @@ def makeFile(jsonObj, objname):
     lines.extend(mappingBlock)
     lines.append(end)
 
-    indention_level = 0
-
-    indented_lines = []
-
-    for line in lines:
-        if line == "}":
-            indention_level -= 1
-            print(line)
-
-        indent = "\t" * indention_level
-        indented_lines.append(indent+line)
-        
-        if line.endswith("{"):
-            indention_level += 1
-            print(line)
-        
+    indented_lines = indent(lines)
 
     with open(objname+".swift", "w") as f:
         f.write("\n".join(indented_lines))
