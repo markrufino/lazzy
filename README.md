@@ -11,4 +11,4 @@ Generate .swift files of Mappable objects from request or response JSON strings.
 
 # TODO
 
-1. Ask help on how to make this fancier by making it downloadable from the command line. 🤔
+1. Ask help on how to make this fancier by making it downloadable from the command line. Are those called packages? 🤔
