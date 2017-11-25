@@ -1,6 +1,7 @@
 import json
 
 print("Lazzy version 1.0")
+print("just refactor -> rename the classes with bad names")
 
 fname = "target.json"
 rname = "result.swift"
@@ -32,8 +33,8 @@ def process(jsonObj):
 
         if inferedType == 'Mappable':
             subMappable = value #json.load(value)
-            makeFile(subMappable, key)
-            inferedType = key
+            inferedType = key+"Object"
+            makeFile(subMappable, inferedType)
         
         sets = (key, inferedType)
         properties.append(sets)
