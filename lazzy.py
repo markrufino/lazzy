@@ -24,9 +24,7 @@ def inferType(value):
 
     raise ValueError('Unable to infer a value.')
 
-def makeFile(jsonObj, objname):
-    declaration = "class "+objname+": Mappable {\n"
-    
+def process(jsonObj):
     properties = []
 
     for (key, value) in jsonObj.items():
@@ -39,38 +37,52 @@ def makeFile(jsonObj, objname):
         
         sets = (key, inferedType)
         properties.append(sets)
-    
-    lines = []
-    lines.append(declaration)
 
-    # Var
+    return properties
+        
+def generateDeclarations(properties):
+    declarations = []
     for (propName, dataType) in properties:
-        s = "\tvar " + propName + ": " + dataType
-        lines.append(s)
-    
-    # Init
-    s = """
+        s = "var " + propName + ": " + dataType
+        declarations.append(s)
+    return declarations
+
+def generateInitBlock():
+    return """
     init() {
     }
 
     required init?(map: Map) {
     }
     """
-    lines.append(s)
 
-    # Mapping
-    s = "\tfunc mapping(map: Map) {"
-    lines.append(s)
-
+def generateMappingBlock(properties):
+    mappingBlock = []
+    mappingBlock.append("func mapping(map: Map) {")
     for (propName, dataType) in properties:
-        s = "\t\t" + propName + ' <- map["' + propName + '"]'
-        lines.append(s)
+        s = propName + ' <- map["' + propName + '"]'
+        mappingBlock.append(s)
+    mappingBlock.append("}")
+    return mappingBlock
 
-    s = "\t}\n"
-    lines.append(s)
 
-    closing = "}"
-    lines.append(closing)
+def makeFile(jsonObj, objname):
+    lines = []
+    properties = process(jsonObj)
+
+    start = "class "+objname+": Mappable {\n"
+
+    declarations = generateDeclarations(properties)
+    initBlock = generateInitBlock()
+    mappingBlock = generateMappingBlock(properties)
+
+    end = "}"
+
+    lines.append(start)
+    lines.extend(declarations)
+    lines.append(initBlock)
+    lines.extend(mappingBlock)
+    lines.append(end)
 
     with open(objname+".swift", "w") as f:
         f.write("\n".join(lines))
