@@ -15,4 +15,4 @@ Lazzy lets you generate ".swift" files for [ObjectMapper's](https://github.com/H
 
 
 # LICENSE
-mit
+MIT
