@@ -22,6 +22,18 @@ def inferType(value):
         return "Double"
     if infer == dict:
         return "Mappable"
+
+    isList = isinstance(value, list)
+
+    if isList:
+        if not value:
+            return "[<#Unknown#>]"
+        else:
+            inferred = inferType(value[0])
+            if inferType(value[0]) == "Mappable":
+                return "Mappable Array"
+            return "[{}]".format(inferred)
+
     raise ValueError('Unable to infer a value.')
 
 def process(jsonObj):
@@ -34,6 +46,12 @@ def process(jsonObj):
             subMappable = value #json.load(value)
             inferedType = key+"Object"
             makeFile(subMappable, inferedType)
+
+        if inferedType == 'Mappable Array':
+            subMappable = value[0]
+            objectName = "{}Object".format(key)
+            inferedType = "[{}]".format(objectName)
+            makeFile(subMappable, objectName)
         
         sets = (key, inferedType)
         properties.append(sets)

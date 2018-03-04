@@ -1,14 +1,13 @@
 {
-   "timestamp": 0,
-   "status": "OK",
-   "statusCode": 200,
-   "contactInfo":    {
-      "contactCenterName": "Customer Call Center",
-      "phoneNumber": "023 988 555",
-      "email": "support@aeon.com.kh",
-      "address": "7th Floor, Building 721, PreahMonivong Blvd, SangkatBouengKeng Kang3, Khan Chamkarmon, Phnom Penh",
-      "businessDays": "Monday - Friday",
-      "businessStartTime": "8:00 am",
-      "businessEndTime": "8:00 pm"
-   }
+    "name": "Some Pokemon",
+    "stats": {
+        "attack": 10.00, 
+        "defense": 12.00,
+        "isHoldingAnItem": true
+    },
+    "moves": [{
+        "moveName": "Pound",
+        "moveType": "Normal",
+        "power": "40"
+    }]
 }
