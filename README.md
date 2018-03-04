@@ -1,6 +1,6 @@
 # lazzy.py (version 1.0)
 
-Lazzy lets you generate ".swift" files for [ObjectMapper's](https://github.com/Hearst-DD/ObjectMapper) "Mappable" from sample json bodies. Supports arrays and nested objects.
+Lazzy generates Swift files for [ObjectMapper's](https://github.com/Hearst-DD/ObjectMapper) "Mappable" if you feed it sample json bodies. Supports arrays and nested objects.
 
 # Usage
 
