@@ -1,30 +1,14 @@
 {
-    "id": "86d4f294-f490-496e-9b02-cbc0310fe4e5",
-    "timestamp": 1511537635358,
-    "status": "OK",
-    "statusCode": 200,
-    "profile": {
-        "merchantId": "47613655652118",
-        "merchantName": "AEON Caf?",
-        "merchantCategoryCode": "5812",
-        "merchantCity": "AEON City",
-        "countryCode": "IN",
-        "transactionCurrencyCode": "356",
-        "contactPerson": "09054519991",
-        "address": "Address 1, Address 2",
-        "city": "Quezon City",
-        "state": "NCR",
-        "country": "Philippines",
-        "postCode": "1116",
-        "phoneNumber": "09054519992",
-        "faxNumber": "09054519992",
-        "emailAddress": "test@email.com"
-    },
-    "notification": {
-        "sendViaEdcPos": true,
-        "sendViaSms": true,
-        "sendViaPushNotification": true,
-        "sendViaWebNotification": true
-    },
-    "sample": 100.00
+   "timestamp": 0,
+   "status": "OK",
+   "statusCode": 200,
+   "contactInfo":    {
+      "contactCenterName": "Customer Call Center",
+      "phoneNumber": "023 988 555",
+      "email": "support@aeon.com.kh",
+      "address": "7th Floor, Building 721, PreahMonivong Blvd, SangkatBouengKeng Kang3, Khan Chamkarmon, Phnom Penh",
+      "businessDays": "Monday - Friday",
+      "businessStartTime": "8:00 am",
+      "businessEndTime": "8:00 pm"
+   }
 }

@@ -22,7 +22,6 @@ def inferType(value):
         return "Double"
     if infer == dict:
         return "Mappable"
-
     raise ValueError('Unable to infer a value.')
 
 def process(jsonObj):
@@ -107,6 +106,6 @@ def makeFile(jsonObj, objname):
 
 
 json_object = json.loads(contents)
-makeFile(json_object, "OutletProfile")
+makeFile(json_object, "<#ModelName#>")
 
 
